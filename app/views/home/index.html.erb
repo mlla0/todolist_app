@@ -1,12 +1,15 @@
 <h1 class="text-center mb-4">Welcome to my todolist app</h1>
 <%= render 'layouts/task_form'  %>
 <div class="container">
-  <ul>
+  <ul class="tabs">
   <% @categories.each do  |category|%>
-  <li><%= category.title  %></li>
-  <div class="card">
+  <li class="tab-link" data-tab="tab-<%= category.id %>"><%= category.title  %></li>
+  <% end %>
+  </ul>
+   <% @categories.each do  |category|%>
+    <div class="card tab-content" id="tab-<%= category.id %>" >
     <ul>
-      <% category.tasks.each do |task|  %>
+      <% category.tasks.each do |task| %>
       <li>
         <%= task.title  %>
         <% unless task.deadline.nil? %>
@@ -17,7 +20,6 @@
     </ul>
   </div>
   <% end %>
-  </ul>
 </div>
 
 <div class="container">

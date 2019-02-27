@@ -1,0 +1,4 @@
+$(document).ready(function(){
+	var item = $("<%= j render 'layouts/task', task: @task %>").hide().fadeIn(2000);
+	$('#tab-<%= @task.category_id %> ul').append(item);
+})
